@@ -32,7 +32,7 @@ do
     Console.WriteLine("\nInforme o segundo número");
     int num2 = Convert.ToInt32(Console.ReadLine());
 
-    switch(operador)
+    switch (operador)
     {
         case "+":
             Console.WriteLine($"{num1} + {num2} = {num1 + num2} \n");
@@ -43,7 +43,7 @@ do
             break;
 
         case "/":
-            if(num1 == 0 || num2 == 0)
+            if (num1 == 0 || num2 == 0)
                 Console.WriteLine("Impossível dividir por ZERO \n");
             else
             {
@@ -63,5 +63,5 @@ do
         Console.WriteLine("\nPrograma finalizado");
         break;
     }
-        
+
 } while (true);

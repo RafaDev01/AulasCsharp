@@ -1,43 +1,69 @@
-﻿Console.WriteLine("Atividade");
+﻿using Sessao4ExPrincipal;
+using System.Security.Cryptography;
 
-Carro chevrolet = new Carro("Sedan", "Chevrolet", "Onix", 2016, 110);
-chevrolet.Modelo = "Sedan";
-chevrolet.Montadora = "Chevrolet";
-chevrolet.Marca = "Onix";
-chevrolet.Ano = 2016;
-chevrolet.Potencia = 110;
+Console.WriteLine("Atividade");
 
-chevrolet.ExibirInfo("Onix", "SUV", "Chevrolet", 100);
+Console.WriteLine($"{CarroEnum.Branco} - {(int)CarroEnum.Branco}");
+
+Carro chevrolet = new Carro("Sedan", "Chevrolet", "Onix", 2016, 110, 5);
+
 Console.WriteLine();
-chevrolet.ExibirInfo("Onix", "SUV", "Chevrolet", 100, 2020);
+chevrolet.ExibirInfo();
+
+Carro carro = new Carro("Sedan", "Chevrolet", "Onix", 2016, 110, 5);
 
 Console.ReadLine();
 
 public class Carro
 {
-    public Carro(string Modelo, string Montadora, string Marca, int Ano, int Potencia)
+    static Carro()
     {
-        this.Modelo = Modelo;
-        this.Montadora = Montadora;
-        this.Marca = Marca;
-        this.Ano = Ano;
-        this.Potencia = Potencia;
+        ValorIpva = 4;
+        Console.WriteLine($"Porcentagem do IPVA sobre o valor do veículo: {ValorIpva}%");
     }
 
+    public int Cor;
+    private int ano;
+    public int Ano
+    {
+        get { return ano; }
+        set
+        {
+            if (value < 2000)
+                ano = 2000;
+            else if (value > 2022)
+                ano = 2022;
+            else
+                ano = value;
+        }
+    }
+    public Carro(string modelo, string montadora, string marca, int ano, int potencia,int cor)
+    {
+        Modelo = modelo;
+        Montadora = montadora;
+        Marca = marca;
+        Ano = ano;
+        Potencia = potencia;
+        Cor = cor;
+    }
+
+    public static double ValorIpva;
     public string? Modelo;
     public string? Montadora;
     public string? Marca;
-    public int Ano;
+    
+
     public int Potencia;
     public double Velocidade;
 
-    public void ExibirInfo(string modelo, string montadora, string marca, int potencia, int ano = 0000)
+    public void ExibirInfo()
     {
-        Console.WriteLine($"Modelo: {modelo}");
-        Console.WriteLine($"Montadora: {montadora}");
-        Console.WriteLine($"Marca: {marca}");
-        Console.WriteLine($"Potencia: {potencia}");
+        Console.WriteLine($"Modelo: {Modelo}");
+        Console.WriteLine($"Montadora: {Montadora}");
+        Console.WriteLine($"Marca: {Marca}");
+        Console.WriteLine($"Potencia: {Potencia}");
         Console.WriteLine($"Ano: {ano}");
+        Console.WriteLine($"Cor: {(CarroEnum)Cor}");
     }
 
     public int AumentarPotenciaVelocidade(int potencia, out double velocidade)

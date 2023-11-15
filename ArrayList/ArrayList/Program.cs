@@ -10,6 +10,13 @@ lista.Add(null);
 
 var lista2 = new ArrayList() { "Paulo", 25.5, null };
 
-Console.WriteLine(lista[0]);
+lista2.Add("Sharp");
+
+foreach (var element in lista2)
+{
+    Console.WriteLine(element);
+}
+
+
 
 Console.ReadKey();
